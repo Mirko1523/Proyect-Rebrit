@@ -28,7 +28,7 @@ const getUserByIdHandler = async (req, res) => {
 const createUserHandler = async (req, res) => {
     try {
         const userInfo = req.body;
-        console.log('User info received:', userInfo); // Asegúrate de que esta línea muestre los datos recibidos
+        console.log('User info received:', userInfo); 
         const newUser = await createUser(userInfo);
         res.status(201).json(newUser);
     } catch (err) {
