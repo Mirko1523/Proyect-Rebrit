@@ -1,5 +1,7 @@
 const { getUsersFromDB, getUserByIdFromDB, createUser } = require('../controllers/userController');
 
+const validUserLevels = ['ADMIN', 'OWNER', 'USER'];
+
 const getUsers = async (req, res) => {
     try {
         const users = await getUsersFromDB();
@@ -26,14 +28,22 @@ const getUserByIdHandler = async (req, res) => {
 };
 
 const createUserHandler = async (req, res) => {
+    const { username, password, email, user_level } = req.body;
+    const currentUser = req.user; 
+
+    console.log('Request body:', req.body); // Verificar el contenido del cuerpo de la solicitud
+    console.log('Current User:', currentUser); // Verificar el usuario autenticado
+    
+    if (!validUserLevels.includes(user_level)) {
+        return res.status(400).json({ message: 'Invalid user level' });
+    }
+
     try {
-        const userInfo = req.body;
-        console.log('User info received:', userInfo); 
-        const newUser = await createUser(userInfo);
+        const newUser = await createUser({ username, password, email, user_level }, currentUser);
         res.status(201).json(newUser);
-    } catch (err) {
-        console.error('Error creating user in DB:', err);
-        res.status(500).json({ error: 'Error creating user in DB' });
+    } catch (error) {
+        console.error('Error creating user:', error);
+        res.status(500).json({ message: 'Error creating user' });
     }
 };
 
