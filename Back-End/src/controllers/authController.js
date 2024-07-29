@@ -2,7 +2,7 @@ const { query } = require('../db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const SECRET_KEY = process.env.ACCESS_SECRET_KEY; // Usa ACCESS_SECRET_KEY
+const SECRET_KEY = process.env.ACCESS_SECRET_KEY; 
 
 const authenticateUser = async (email, password) => {
     try {
@@ -10,6 +10,9 @@ const authenticateUser = async (email, password) => {
         const user = result.rows[0];
 
         if (user && await bcrypt.compare(password, user.password)) {
+            if (user.is_disabled){
+                return {error: 'user is disabled'}
+            }
             const { password, ...userWithoutPassword } = user;
 
             // Generar token JWT

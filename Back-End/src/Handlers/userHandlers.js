@@ -1,4 +1,4 @@
-const { getUsersFromDB, getUserByIdFromDB, createUser } = require('../controllers/userController');
+const { getUsersFromDB, getUserByIdFromDB, createUser, userDisable } = require('../controllers/userController');
 
 const validUserLevels = ['ADMIN', 'OWNER', 'USER'];
 
@@ -31,8 +31,8 @@ const createUserHandler = async (req, res) => {
     const { username, password, email, user_level } = req.body;
     const currentUser = req.user; 
 
-    console.log('Request body:', req.body); // Verificar el contenido del cuerpo de la solicitud
-    console.log('Current User:', currentUser); // Verificar el usuario autenticado
+    console.log('Request body:', req.body);
+    console.log('Current User:', currentUser);
     
     if (!validUserLevels.includes(user_level)) {
         return res.status(400).json({ message: 'Invalid user level' });
@@ -47,8 +47,26 @@ const createUserHandler = async (req, res) => {
     }
 };
 
+const disableUserHandler = async (req, res) => {
+    const { id } = req.params;
+
+    if (isNaN(parseInt(id))) {
+        return res.status(400).json({ error: 'Invalid user ID' });
+    }
+
+    try {
+        const updatedUser = await userDisable(id);
+        res.json(updatedUser);
+    } catch (error) {
+        console.error('Error disabling/enabling user:', error);
+        res.status(500).json({ error: 'Error disabling/enabling user' });
+    }
+};
+
+
 module.exports = {
     getUsers,
     getUserByIdHandler,
-    createUserHandler
+    createUserHandler,
+    disableUserHandler
 };

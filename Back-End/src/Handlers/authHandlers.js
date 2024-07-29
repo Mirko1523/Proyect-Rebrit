@@ -10,6 +10,9 @@ const loginUser = async (req, res) => {
     try {
         const result = await authenticateUser(email, password);
         if (result) {
+            if (result.error) {
+                return res.status(403).json({ message: result.error });
+            }
             res.status(200).json({ message: 'Login successful', user: result.user, token: result.token });
         } else {
             res.status(401).json({ message: 'Invalid email or password' });

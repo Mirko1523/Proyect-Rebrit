@@ -46,9 +46,59 @@ const createUser = async (userInfo, currentUser) => {
         throw new Error('Error creating user in DB');
     }
 };
+const updateUser = async (req, res) => {
+    const { id } = req.params;
+    const { username, email, password, user_level } = req.body;
+    
+    try {
+        const result = await db.query('SELECT * FROM users WHERE id = $1', [id]);
+        const user = result.rows[0];
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        const hashedPassword = password ? await bcrypt.hash(password, saltRounds) : user.password;
+
+        const updatedUserResult = await db.query(
+            'UPDATE users SET username = $1, email = $2, password = $3, user_level = $4 WHERE id = $5 RETURNING *',
+            [username, email, hashedPassword, user_level, id]
+        );
+
+        res.json(updatedUserResult.rows[0]);
+    } catch (error) {
+        console.error('Error updating user:', error);
+        res.status(500).json({ message: 'Failed to update user' });
+    }
+};
+
+const userDisable = async (id) => {
+    try {
+        const result = await db.query('SELECT * FROM users WHERE id = $1', [id]);
+        const user = result.rows[0];
+
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        const updatedUserResult = await db.query(
+            'UPDATE users SET is_disabled = NOT is_disabled WHERE id = $1 RETURNING *',
+            [id]
+        );
+
+        return updatedUserResult.rows[0];
+    } catch (error) {
+        console.error('Error disabling/enabling user:', error);
+        throw new Error('Error disabling/enabling user');
+    }
+};
+
+
 
 module.exports = {
     getUsersFromDB,
     getUserByIdFromDB,
-    createUser
+    createUser,
+    updateUser,
+   userDisable
 };

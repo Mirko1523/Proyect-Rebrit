@@ -15,7 +15,7 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*'); 
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization'); // Añadido Authorization
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE,');
   
  
   if (req.method === 'OPTIONS') {
@@ -29,6 +29,7 @@ app.use(express.json());
 
 app.use('/api', userRoutes);
 app.use('/api', authRoutes);
+
 
 const PORT = 3001;
 app.listen(PORT, () => {

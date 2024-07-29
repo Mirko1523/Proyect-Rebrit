@@ -10,8 +10,8 @@ import Dashboard from './pages/Dashboard';
 import Signin from './components/components2/SignIn/SignIn';
 import UsersTable from './components/components2/Tables-Users/Tables-Users'
 import Analytics from './components/components2/Analytics/analytics'
-import Shop from './components/E-commerce/shop';
-import Pay from './components/E-commerce/pay';
+import Shop from './components/components2/Shop/shop';
+import Pay from './components/components2/Shop/pay';
 import Faqs from './components/components2/FAQs/FAQs';
 function App() {
 

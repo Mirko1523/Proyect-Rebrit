@@ -1,4 +1,3 @@
-// authApi.jsx
 export const login = async (username, password) => {
   try {
     const response = await fetch('http://localhost:3001/api/login', {
@@ -14,7 +13,7 @@ export const login = async (username, password) => {
     }
 
     const data = await response.json();
-    return data; // Asegúrate de que data contiene el token
+    return data;
   } catch (error) {
     console.error('Error logging in:', error);
     throw error;
