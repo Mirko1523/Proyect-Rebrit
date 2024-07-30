@@ -74,7 +74,7 @@ function CryptoList() {
                 onClick={() => handleBuy(coin)}
                 className="px-4 py-2 bg-blue-950 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700"
               >
-                Buy
+                Comprar
               </button>
             </div>
           </div>

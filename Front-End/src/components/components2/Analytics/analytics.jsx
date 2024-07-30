@@ -8,7 +8,7 @@ import DashboardCard03 from '../../../partials/dashboard/DashboardCard03';
 import DashboardCard04 from '../../../partials/dashboard/DashboardCard04';
 import DashboardCard05 from '../../../partials/dashboard/DashboardCard05';
 
-import Banner from '../../../partials/Banner';
+// import Banner from '../../../partials/Banner';
 
 function Dashboard() {
 
@@ -34,7 +34,7 @@ function Dashboard() {
 
               {/* Left: Title */}
               <div className="mb-4 sm:mb-0">
-                <h1 className="text-2xl md:text-3xl text-gray-800 dark:text-gray-100 font-bold">Analitycs in real time</h1>
+                <h1 className="text-2xl md:text-3xl text-gray-800 dark:text-gray-100 font-bold">Analiticas en tiempo real</h1>
               </div>
 
             </div>
@@ -60,7 +60,7 @@ function Dashboard() {
           </div>
         </main>
 
-        <Banner />
+        {/* <Banner /> */}
 
       </div>
     </div>

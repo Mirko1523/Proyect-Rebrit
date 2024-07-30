@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Sidebar from '../../../partials/Sidebar';
 import Header from '../../../partials/Header';
-import Banner from '../../../partials/Banner';
+// import Banner from '../../../partials/Banner';
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -22,9 +22,9 @@ function Dashboard() {
             <div className="sm:flex sm:justify-between sm:items-center mb-8">
               {/* Left: Title */}
               <div>
-                <h1 className="text-2xl md:text-3xl text-gray-800 dark:text-gray-100 font-bold">👋 How we can help you today?</h1>
+                <h1 className="text-2xl md:text-3xl text-gray-800 dark:text-gray-100 font-bold">👋 Como podemos ayudarte hoy?</h1>
               </div>
-              <h2 className="text-gray-800 dark:text-gray-100 font-bold cbtcb cdiog">Popular Questions</h2>
+              <h2 className="text-gray-800 dark:text-gray-100 font-bold cbtcb cdiog">Preguntas frecuentes</h2>
             </div>
             <hr className="my-4" />
 
@@ -90,7 +90,7 @@ function Dashboard() {
           </div>
         </main>
 
-        <Banner />
+        {/* <Banner /> */}
       </div>
     </div>
   );

@@ -41,20 +41,20 @@ function Pay() {
 
         <main className="flex-1 p-4 lg:p-6 overflow-auto">
           <div className="bg-white shadow-lg rounded-lg w-full max-w-md mx-auto p-4 md:p-6">
-            <h1 className="text-xl font-bold mb-4 text-center">Complete Your Purchase</h1>
+            <h1 className="text-xl font-bold mb-4 text-center">Completa tu compra</h1>
 
             <div className="flex flex-wrap justify-center mb-4">
               <button
                 className={`w-full md:w-1/2 py-2 px-4 rounded-t-lg ${isCard ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'}`}
                 onClick={() => setIsCard(true)}
               >
-                Pay With Card
+                Pagar con tarjeta
               </button>
               <button
                 className={`w-full md:w-1/2 py-2 px-4 rounded-b-lg ${!isCard ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'}`}
                 onClick={() => setIsCard(false)}
               >
-                Pay With PayPal
+                Pagar con PayPal
               </button>
             </div>
 

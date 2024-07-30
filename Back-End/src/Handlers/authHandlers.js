@@ -15,7 +15,7 @@ const loginUser = async (req, res) => {
             }
             res.status(200).json({ message: 'Login successful', user: result.user, token: result.token });
         } else {
-            res.status(401).json({ message: 'Invalid email or password' });
+            res.status(401).json({ message: 'Email o contraseña incorrecta' });
         }
     } catch (error) {
         console.error('Error logging in:', error);
