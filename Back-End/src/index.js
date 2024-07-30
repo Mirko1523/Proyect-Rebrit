@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./Routes/userRoutes');
-const authRoutes = require('./routes/authRoutes');
+const authRoutes = require('./Routes/authRoutes')
 const morgan = require('morgan');
 
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
