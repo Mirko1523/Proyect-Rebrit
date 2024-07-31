@@ -13,6 +13,17 @@ import Analytics from './components/components2/Analytics/analytics'
 import Shop from './components/components2/Shop/shop';
 import Pay from './components/components2/Shop/pay';
 import Faqs from './components/components2/FAQs/FAQs';
+import { AuthProvider, useAuth } from './components/components2/SignIn/authcontext';
+
+function PrivateRoute({children}){
+  const {auth} = useAuth;
+  if(!auth.isAuthenticades){
+    return <Navigate to="/"/>
+  }
+  return children
+}
+
+
 function App() {
 
   const location = useLocation();
@@ -23,7 +34,8 @@ function App() {
     document.querySelector('html').style.scrollBehavior = ''
   }, [location.pathname]); 
   return (
-    <>
+    
+    <AuthProvider>
       <Routes>
         <Route exact path="/home" element={<Dashboard />} />
         <Route exact path="/" element={<Signin />} />
@@ -33,7 +45,9 @@ function App() {
        <Route exact path="/home/pay" element={<Pay/>}></Route>
        <Route exact path="/home/Faqs" element={<Faqs/>}></Route>
       </Routes>
-    </>
+    </AuthProvider>
+    
+
   );
 }
 

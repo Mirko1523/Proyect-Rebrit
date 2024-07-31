@@ -10,7 +10,6 @@ function CryptoList() {
   useEffect(() => {
     fetch(
       'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Ctether%2Cethereum%2Clitecoin%2Ccardano%2Cdogecoin&vs_currencies=usd&include_24hr_change=true'
-    
     )
       .then((res) => {
         if (!res.ok) {
@@ -46,7 +45,7 @@ function CryptoList() {
           >
             <div className="flex items-center">
               <img
-                src={`/public/images/${coin}.png`}
+                src={`/images/${coin}.png`}
                 alt={coin}
                 className="w-12 h-12 mr-4"
               />

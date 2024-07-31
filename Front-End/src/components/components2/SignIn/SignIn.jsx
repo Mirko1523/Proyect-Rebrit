@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "./authcontext";
-
 
 function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const {login} = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -22,9 +21,8 @@ function Signin() {
 
       if (response.status === 200) {
         console.log("Login successful:", response.data);
-        localStorage.setItem('token', response.data.token)
-        login(response.data.user, response.data.token)
-        navigate("/home")
+        login(response.data.user, response.data.token);
+        navigate("/home");
       }
     } catch (error) {
       if (error.response) {
