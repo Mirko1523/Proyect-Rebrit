@@ -42,7 +42,7 @@ const UsersTable = () => {
 
     const fetchUsers = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/users');
+        const response = await fetch(`https://proyect-rebrit.onrender.com/api/users`);
         if (!response.ok) {
           throw new Error('Failed to fetch users');
         }
@@ -66,7 +66,7 @@ const UsersTable = () => {
     e.preventDefault();
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch('http://localhost:3001/api/users', {
+      const response = await fetch('https://proyect-rebrit.onrender.com/api/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ const UsersTable = () => {
     e.preventDefault();
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch(`http://localhost:3001/api/users/${editingUserId}`, {
+      const response = await fetch(`https://proyect-rebrit.onrender.com/api/users/${editingUserId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ const UsersTable = () => {
   const handleDisableUser = async (userId) => {
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch(`http://localhost:3001/api/users/${userId}/disable`, {
+      const response = await fetch(`https://proyect-rebrit.onrender.com/api/users/${userId}/disable`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
