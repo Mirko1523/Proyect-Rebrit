@@ -46,7 +46,7 @@ function CryptoList() {
           >
             <div className="flex items-center">
               <img
-                src={`/images/${coin}.png`}
+                src={`/public/images/${coin}.png`}
                 alt={coin}
                 className="w-12 h-12 mr-4"
               />

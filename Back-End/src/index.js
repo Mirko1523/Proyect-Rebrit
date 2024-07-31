@@ -50,7 +50,7 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(cookieParser());
 app.use(morgan('dev'));
 
-const allowedOrigins = ['https://localhost:3001'];
+const allowedOrigins = [ 'https://weath2b.netlify.app/','https://localhost:3001'];
 
 app.use((req, res, next) => {
   const origin = req.headers.origin;
